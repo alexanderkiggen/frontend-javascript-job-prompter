@@ -70,5 +70,147 @@ const departments = {
         ],
     }
 }
+// Opdracht 1a
+console.log("De afdeling Sales heeft", departments.sales.numberOfEmployees, "medewerkers");
 
-console.log(departments);
+// Opdracht 1b
+console.log("Marketing is een leuke afdeling om te werken", departments.marketing.description);
+
+// Opdracht 1c
+console.log("De afdeling Customer Service heeft", departments["customer-service"].numberOfEmployees, "medewerkers");
+
+// Opdracht 1d
+console.log("Sales is een uitdagende afdeling om te werken als Verkoopmanager.", departments.sales.jobs[1].description);
+
+
+// Opdracht 2a
+// const userInput = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]');
+//
+// Opdracht 2b / 2c
+//
+// switch (userInput) {
+//     case "customer-service":
+//         console.log("Je koos", userInput + ".", departments["customer-service"].description);
+//         break;
+//     case "sales":
+//         console.log("Je koos", userInput + ".", departments.sales.description);
+//         break;
+//     case "marketing":
+//         console.log("Je koos", userInput + ".", departments.marketing.description);
+//         break;
+//     default:
+//         console.error("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.");
+//         break;
+// }
+
+
+// Opdracht 3a + 3b + 3c
+// const functieIndex = prompt(
+//     "Je koos marketing. Over welke functie wil je meer weten?\n" +
+//     "0: " + departments.marketing.jobs[0].title + "\n" +
+//     "1: " + departments.marketing.jobs[1].title + "\n" +
+//     "2: " + departments.marketing.jobs[2].title + "\n" +
+//     "3: " + departments.marketing.jobs[3].title + "\n" +
+//     "4: " + departments.marketing.jobs[4].title + "\n"
+// );
+
+// switch (functieIndex) {
+//     case "0":
+//         console.log("Je koos", departments.marketing.jobs[0].title + ". Een uitdagende rol!", departments.marketing.jobs[0].description);
+//         break;
+//     case "1":
+//         console.log("Je koos", departments.marketing.jobs[1].title + ". Een uitdagende rol!", departments.marketing.jobs[1].description);
+//         break;
+//     case "2":
+//         console.log("Je koos", departments.marketing.jobs[2].title + ". Een uitdagende rol!", departments.marketing.jobs[2].description);
+//         break;
+//     case "3":
+//         console.log("Je koos", departments.marketing.jobs[3].title + ". Een uitdagende rol!", departments.marketing.jobs[3].description);
+//         break;
+//     case "4":
+//         console.log("Je koos", departments.marketing.jobs[4].title + ". Een uitdagende rol!", departments.marketing.jobs[4].description);
+//         break;
+//     default:
+//         console.error("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.");
+//         break;
+// }
+
+// Opdracht 4a
+// const userInput = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]');
+//
+// switch (userInput) {
+//     case "customer-service":
+//     case "sales":
+//     case "marketing":
+//         console.log(userInput + " is een leuke afdeling om te werken. Er werken op dit moment " + departments[userInput].numberOfEmployees + " medewerkers.");
+//         break;
+//     default:
+//         console.error("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.");
+//         break;
+// }
+
+// Opdracht 4b
+// if (userInput === "marketing" || userInput === "sales" || userInput === "customer-service") {
+//     const afdeling = userInput;
+//     const functies = departments[afdeling].jobs;
+//
+//     const functieKeuze = prompt(
+//         "Je koos " + afdeling + ". Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in. " +
+//         "\n0: " + functies[0].title +
+//         "\n1: " + functies[1].title +
+//         "\n2: " + functies[2].title +
+//         "\n3: " + functies[3].title
+//     );
+
+// Opdracht 4c
+
+// const index = parseInt(functieKeuze);
+//
+// if (index >= 0 && index <= 3) {
+//     console.log("Je koos " + functies[index].title + ". Een uitdagende rol!", functies[index].description);
+// } else {
+//     console.error("Ongeldige functiekeuze. Probeer het opnieuw door de pagina te verversen.");
+// }
+
+// Opdracht 5a
+
+// document.getElementById('role-title').textContent = 'Alexander Kiggen';
+// document.getElementById('department-description').textContent = 'Pizza';
+
+// Opdracht 5b
+const userInput = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]');
+
+// Verwerk afdelingskeuze
+switch (userInput) {
+    case "customer-service":
+    case "sales":
+    case "marketing":
+        console.log(userInput + " is een leuke afdeling om te werken. Er werken op dit moment " + departments[userInput].numberOfEmployees + " medewerkers.");
+        document.getElementById('department-description').textContent = departments[userInput].description;
+        document.getElementById('error-message').textContent = ""; // wis foutmelding
+        break;
+    default:
+        document.getElementById('error-message').textContent = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.";
+        break;
+}
+
+if (userInput === "marketing" || userInput === "sales" || userInput === "customer-service") {
+    const afdeling = userInput;
+    const functies = departments[afdeling].jobs;
+
+    const functieKeuze = parseInt(prompt(
+        "Je koos " + afdeling + ". Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in." +
+        "\n0: " + functies[0].title +
+        "\n1: " + functies[1].title +
+        "\n2: " + functies[2].title +
+        "\n3: " + functies[3].title
+    ));
+
+    if (functieKeuze >= 0 && functieKeuze <= 3) {
+        document.getElementById('role-title').textContent = functies[functieKeuze].title;
+        document.getElementById('role-description').textContent = functies[functieKeuze].description;
+        document.getElementById('error-message').textContent = ""; // wis foutmelding
+    } else {
+        document.getElementById('error-message').textContent = "Ongeldige functiekeuze. Probeer het opnieuw door de pagina te verversen.";
+    }
+}
